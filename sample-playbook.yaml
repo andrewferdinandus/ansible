@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install httpd via ansible
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+        update_cache: yes
+
+    - name: Copy index file with owner permissions
+      ansible.builtin.copy:
+        src: index.html
+        dest: /var/www/html
+        owner: root
+        group: root
+        mode: '0644'
