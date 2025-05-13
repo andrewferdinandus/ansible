@@ -1,0 +1,12 @@
+Notes
+
+You must install community.mysql collection if mysql_user is not available:
+
+ansible-galaxy collection install community.mysql
+
+Also install Python MySQL bindings on the target (via a task):
+
+- name: Install python3-mysqldb
+  apt:
+    name: python3-mysqldb
+    state: present
